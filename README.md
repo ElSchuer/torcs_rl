@@ -14,10 +14,10 @@ sudo make datainstall
 ```
 
 torcs_rl dependencies:
-python 3.7
-keras 
-tensorflow 
-matplotlib 
-seaborn 
-gym
-xautomation
+* python 3.7
+* keras 
+* tensorflow 
+* matplotlib 
+* seaborn 
+* gym
+* xautomation
