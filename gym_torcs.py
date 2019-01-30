@@ -22,14 +22,14 @@ class TorcsEnv:
     
         self.initial_run = True
 
-       
+        self.ubuntu_flavor = snakeoil3.getUbuntuFlavor()
         os.system('pkill torcs')
         time.sleep(0.5)
        
         os.system('torcs -nofuel -nodamage -nolaptime  -vision &')
         
         time.sleep(0.5)
-        os.system('sh autostart.sh')
+        os.system(self.ubuntu_flavor)
         time.sleep(0.5)
 
         ######CHANGED FOR DISCRETE VALUES######
@@ -170,7 +170,8 @@ class TorcsEnv:
         os.system('torcs -nofuel -nodamage -nolaptime -vision &')
        
         time.sleep(0.5)
-        os.system('sh autostart.sh')
+        os.system(self.ubuntu_flavor)
+
         time.sleep(0.5)
 
     def agent_to_torcs(self, u):

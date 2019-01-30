@@ -6,6 +6,8 @@ import dqn_agent
 import eval
 import torcs_env
 
+
+
 def reward_function(state, done, score, max_score, reward):
     return reward
 
@@ -33,6 +35,7 @@ def get_model(action_size, state_size):
     model.add(Dense(units=action_size, activation='linear'))
 
     return model
+
 
 eval_inst = eval.RLEvaluation()
 env = torcs_env.TorcsEnvironment(eval_inst=eval_inst)

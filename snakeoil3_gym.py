@@ -58,6 +58,7 @@ import sys
 import getopt
 import os
 import time
+import subprocess
 import numpy as np
 import codecs
 PI= 3.14159265359
@@ -180,7 +181,8 @@ class Client():
                     os.system('torcs -nofuel -nodamage -nolaptime -vision &')
 
                     time.sleep(1.0)
-                    os.system('sh autostart.sh')
+                    autostart_script = getUbuntuFlavor()
+                    os.system(autostart_script)
                     n_fail = 5
                 n_fail -= 1
 
@@ -585,6 +587,13 @@ def drive_example(c):
         R['gear']=6
     return
 
+def getUbuntuFlavor():
+    ubuntu_flavor_string = subprocess.check_output(['cat', '/var/log/installer/media-info']).decode(sys.stdout.encoding)
+    ubuntu_flavor = ubuntu_flavor_string.split(' ', 1)[0]
+    if (ubuntu_flavor == 'Lubuntu'):
+        return 'sh autostart_lubuntu.sh'
+    else:
+        return 'sh autostart_ubuntu.sh'
 # ================ MAIN ================
 if __name__ == "__main__":
     C= Client(p=3101)

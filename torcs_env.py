@@ -21,6 +21,7 @@ class TorcsEnvironment(Environment):
         print('action space', self.env.action_space)
         print('action size', self.env.action_space.n)
 
+
     def step(self, action):
         return self.env.step(action)
 
@@ -28,6 +29,7 @@ class TorcsEnvironment(Environment):
 
         if len(self.agent.data_batch) >= self.agent.batch_size and step % self.train_steps == 0:
             time.sleep(0.1)
+
             os.system("xte 'key F1'")
             history = self.agent.train()
             time.sleep(0.1)
