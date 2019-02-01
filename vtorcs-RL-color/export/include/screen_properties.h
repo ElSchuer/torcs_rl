@@ -1,1 +1,1 @@
-/home/elschuer/dev/torcs/vtorcs-RL-color/src/libs/tgfclient/screen_properties.h
+/home/machine_learning/torcs_rl/vtorcs-RL-color/src/libs/tgfclient/screen_properties.h

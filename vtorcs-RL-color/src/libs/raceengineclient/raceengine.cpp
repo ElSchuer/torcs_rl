@@ -229,7 +229,8 @@ ReManage(tCarElt *car)
   if( getVision() ){
 	  // GIUSE: TODO: this assignment needs to be done ONLY ONCE!! TAKE THIS OUT somehow!
     car->vision = ReInfo->vision;
-	  //visionUpdate();
+
+	  visionUpdate();
   }
 
 

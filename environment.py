@@ -1,6 +1,6 @@
 import gym
 import numpy as np
-
+import sys
 class Environment:
 
     def __init__(self, max_episodes = 10000, seed=10):
@@ -54,6 +54,7 @@ class GymEnvironment(Environment):
             return self.agent.train()
 
     def learn(self):
+        
         for e in range(10000):
             state = self.env.reset()
             state = np.reshape(state, [1, self.state_size])
@@ -65,10 +66,9 @@ class GymEnvironment(Environment):
                     self.env.render()
 
                 action = self.agent.act(state)
-
                 next_state, reward, done, info = self.env.step(action)
                 next_state = np.reshape(next_state, [1, self.state_size])
-
+                
                 reward = self.get_reward(state, done, s, self.max_score, reward)
                 total_reward += reward
 

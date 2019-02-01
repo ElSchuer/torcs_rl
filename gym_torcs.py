@@ -8,6 +8,10 @@ import copy
 import collections as col
 import os
 import time
+#import matplotlib.pyplot as plt
+from PIL import Image
+
+
 
 
 class TorcsEnv:
@@ -45,9 +49,9 @@ class TorcsEnv:
 
         # convert thisAction to the actual torcs actionstr
         client = self.client
-
+        
         this_action = self.agent_to_torcs(u)
-
+        
         # Apply Action
         action_torcs = client.R.d
 
@@ -80,11 +84,12 @@ class TorcsEnv:
 
         # One-Step Dynamics Update #################################
         # Apply the Agent's action into torcs
+        
         client.respond_to_server()
-
+        
         # Get the response of TORCS
         client.get_servers_input()
-
+        
         # Get the current full-observation from torcs
         obs = client.S.d
 
@@ -96,8 +101,9 @@ class TorcsEnv:
         track = np.array(obs['track'])
         sp = np.array(obs['speedX'])
         progress = sp*np.cos(obs['angle'])
-        reward = progress
-
+        #reward = progress
+        reward = np.cos(2*obs['trackPos'])*np.cos(2*obs['angle'])
+       
         # collision detection
         if obs['damage'] - obs_pre['damage'] > 0:
             reward = -1
@@ -168,7 +174,7 @@ class TorcsEnv:
         time.sleep(0.5)
        
         os.system('torcs -nofuel -nodamage -nolaptime -vision &')
-       
+       	
         time.sleep(0.5)
         os.system(self.ubuntu_flavor)
 
@@ -184,7 +190,7 @@ class TorcsEnv:
     def obs_vision_to_image_rgb(self, obs_image_vec):
         
         image_vec = obs_image_vec
-    
+        
         return np.array(image_vec, dtype=np.uint8)
 
     def make_observaton(self, raw_obs):
@@ -195,5 +201,5 @@ class TorcsEnv:
         # Get RGB from observation
 
         image_rgb = self.obs_vision_to_image_rgb(raw_obs[names[0]])
-
+        
         return Observation(img=image_rgb)

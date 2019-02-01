@@ -128,7 +128,7 @@ linuxspec.o: ../../linux/linuxspec.cpp /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/confname.h \
  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tgf.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tgf.h \
  /usr/include/x86_64-linux-gnu/sys/param.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
@@ -169,8 +169,8 @@ linuxspec.o: ../../linux/linuxspec.cpp /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/osspec.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/os.h
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/osspec.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/os.h
 ac3dload.o: ac3dload.cpp /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \

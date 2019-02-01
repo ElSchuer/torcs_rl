@@ -14,9 +14,9 @@ policy.o: policy.cpp /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
  /usr/include/strings.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/learn_debug.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/real.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/policy.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/learn_debug.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/real.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/policy.h \
  /usr/include/c++/7/cmath /usr/include/c++/7/bits/cpp_type_traits.h \
  /usr/include/c++/7/ext/type_traits.h /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
@@ -65,12 +65,12 @@ policy.o: policy.cpp /usr/include/stdc-predef.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/ANN.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/ANN.h \
  /usr/include/assert.h /usr/include/c++/7/stdlib.h \
  /usr/include/c++/7/math.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/string_utils.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/List.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/Distribution.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/string_utils.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/List.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/Distribution.h \
  /usr/include/c++/7/iostream /usr/include/c++/7/ostream \
  /usr/include/c++/7/ios /usr/include/c++/7/iosfwd \
  /usr/include/c++/7/bits/stringfwd.h /usr/include/c++/7/bits/memoryfwd.h \
@@ -149,10 +149,10 @@ policy.o: policy.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/7/bits/basic_ios.tcc \
  /usr/include/c++/7/bits/ostream.tcc /usr/include/c++/7/istream \
  /usr/include/c++/7/bits/istream.tcc \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/MathFunctions.h
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/MathFunctions.h
 ann_policy.o: ann_policy.cpp /usr/include/stdc-predef.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/ann_policy.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/policy.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/ann_policy.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/policy.h \
  /usr/include/c++/7/cmath \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
@@ -214,15 +214,15 @@ ann_policy.o: ann_policy.cpp /usr/include/stdc-predef.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/ANN.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/ANN.h \
  /usr/include/assert.h /usr/include/c++/7/stdlib.h \
  /usr/include/c++/7/math.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/learn_debug.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/real.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/string_utils.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/learn_debug.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/real.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/string_utils.h \
  /usr/include/c++/7/cstring /usr/include/string.h /usr/include/strings.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/List.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/Distribution.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/List.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/Distribution.h \
  /usr/include/c++/7/iostream /usr/include/c++/7/ostream \
  /usr/include/c++/7/ios /usr/include/c++/7/iosfwd \
  /usr/include/c++/7/bits/stringfwd.h /usr/include/c++/7/bits/memoryfwd.h \
@@ -302,7 +302,7 @@ ann_policy.o: ann_policy.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/7/bits/ostream.tcc /usr/include/c++/7/istream \
  /usr/include/c++/7/bits/istream.tcc
 List.o: List.cpp /usr/include/stdc-predef.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/List.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/List.h \
  /usr/include/c++/7/stdlib.h /usr/include/c++/7/cstdlib \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
@@ -354,10 +354,10 @@ List.o: List.cpp /usr/include/stdc-predef.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/assert.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/learn_debug.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/real.h
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/learn_debug.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/real.h
 string_utils.o: string_utils.cpp /usr/include/stdc-predef.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/string_utils.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/string_utils.h \
  /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -410,10 +410,10 @@ string_utils.o: string_utils.cpp /usr/include/stdc-predef.h \
  /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/include/c++/7/bits/std_abs.h /usr/include/c++/7/cstring \
  /usr/include/string.h /usr/include/strings.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/learn_debug.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/real.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/portability.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/config.h
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/learn_debug.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/real.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/portability.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/config.h
 Distribution.o: Distribution.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/7/cstdio \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
@@ -477,8 +477,8 @@ Distribution.o: Distribution.cpp /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/Distribution.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/real.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/Distribution.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/real.h \
  /usr/include/c++/7/iostream /usr/include/c++/7/ostream \
  /usr/include/c++/7/ios /usr/include/c++/7/iosfwd \
  /usr/include/c++/7/bits/stringfwd.h /usr/include/c++/7/bits/memoryfwd.h \
@@ -558,8 +558,8 @@ Distribution.o: Distribution.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/7/bits/ostream.tcc /usr/include/c++/7/istream \
  /usr/include/c++/7/bits/istream.tcc
 MathFunctions.o: MathFunctions.cpp /usr/include/stdc-predef.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/MathFunctions.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/real.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/MathFunctions.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/real.h \
  /usr/include/c++/7/cmath \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
@@ -614,7 +614,7 @@ MathFunctions.o: MathFunctions.cpp /usr/include/stdc-predef.h \
  /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/include/c++/7/cassert /usr/include/assert.h
 ANN.o: ANN.cpp /usr/include/stdc-predef.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/ANN.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/ANN.h \
  /usr/include/assert.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -676,12 +676,12 @@ ANN.o: ANN.cpp /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/learn_debug.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/real.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/string_utils.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/learn_debug.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/real.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/string_utils.h \
  /usr/include/c++/7/cstring /usr/include/string.h /usr/include/strings.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/List.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/learning/Distribution.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/List.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/learning/Distribution.h \
  /usr/include/c++/7/iostream /usr/include/c++/7/ostream \
  /usr/include/c++/7/ios /usr/include/c++/7/iosfwd \
  /usr/include/c++/7/bits/stringfwd.h /usr/include/c++/7/bits/memoryfwd.h \

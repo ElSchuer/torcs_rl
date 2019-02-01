@@ -75,7 +75,7 @@ static int UDP_MSGLEN = 128*128+1000;
 
 static int UDP_TIMEOUT = UDP_DEFAULT_TIMEOUT;
 
-#define NBBOTS 10
+#define NBBOTS 1
 
 #define RACE_RESTART 1
 //#define __STEP_LIMIT__ 10000
@@ -144,7 +144,7 @@ static unsigned long total_tics[NBBOTS];
 extern "C" int
     scr_server(tModInfo *modInfo)
 {
-    memset(modInfo, 0, 10*sizeof(tModInfo));
+    memset(modInfo, 0, 1*sizeof(tModInfo));
 
 	for (int i = 0; i < NBBOTS; i++) {
 		modInfo[i].name    = botname[i];  // name of the module (short).

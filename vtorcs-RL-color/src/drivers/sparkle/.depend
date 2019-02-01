@@ -59,7 +59,7 @@ sparkle.o: sparkle.cpp /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tgf.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tgf.h \
  /usr/include/x86_64-linux-gnu/sys/param.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
@@ -92,14 +92,14 @@ sparkle.o: sparkle.cpp /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/asm/param.h \
  /usr/include/asm-generic/param.h /usr/include/assert.h \
  /usr/include/c++/7/cstring /usr/include/string.h /usr/include/strings.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/osspec.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/track.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/linalg_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/v2_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/v3_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/v4_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/straight2_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/car.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/osspec.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/track.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/linalg_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/v2_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/v3_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/v4_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/straight2_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/car.h \
  /usr/include/plib/sg.h /usr/include/plib/ul.h /usr/include/ctype.h \
  /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
@@ -115,12 +115,12 @@ sparkle.o: sparkle.cpp /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
  /usr/include/x86_64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/raceman.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/graphic.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/simu.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/robottools.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/robot.h driver.h \
- linalg.h opponent.h pit.h spline.h
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/raceman.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/graphic.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/simu.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/robottools.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/robot.h \
+ driver.h linalg.h opponent.h pit.h spline.h
 driver.o: driver.cpp /usr/include/stdc-predef.h driver.h \
  /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -184,7 +184,7 @@ driver.o: driver.cpp /usr/include/stdc-predef.h driver.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tgf.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tgf.h \
  /usr/include/x86_64-linux-gnu/sys/param.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
@@ -216,14 +216,14 @@ driver.o: driver.cpp /usr/include/stdc-predef.h driver.h \
  /usr/include/x86_64-linux-gnu/bits/param.h /usr/include/linux/param.h \
  /usr/include/x86_64-linux-gnu/asm/param.h \
  /usr/include/asm-generic/param.h /usr/include/assert.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/osspec.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/track.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/linalg_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/v2_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/v3_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/v4_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/straight2_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/car.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/osspec.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/track.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/linalg_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/v2_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/v3_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/v4_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/straight2_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/car.h \
  /usr/include/plib/sg.h /usr/include/plib/ul.h /usr/include/ctype.h \
  /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
@@ -239,12 +239,12 @@ driver.o: driver.cpp /usr/include/stdc-predef.h driver.h \
  /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
  /usr/include/x86_64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/raceman.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/graphic.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/simu.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/robottools.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/robot.h linalg.h \
- opponent.h pit.h spline.h
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/raceman.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/graphic.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/simu.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/robottools.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/robot.h \
+ linalg.h opponent.h pit.h spline.h
 opponent.o: opponent.cpp /usr/include/stdc-predef.h opponent.h \
  /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -308,7 +308,7 @@ opponent.o: opponent.cpp /usr/include/stdc-predef.h opponent.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tgf.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tgf.h \
  /usr/include/x86_64-linux-gnu/sys/param.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
@@ -340,14 +340,14 @@ opponent.o: opponent.cpp /usr/include/stdc-predef.h opponent.h \
  /usr/include/x86_64-linux-gnu/bits/param.h /usr/include/linux/param.h \
  /usr/include/x86_64-linux-gnu/asm/param.h \
  /usr/include/asm-generic/param.h /usr/include/assert.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/osspec.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/track.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/linalg_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/v2_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/v3_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/v4_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/straight2_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/car.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/osspec.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/track.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/linalg_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/v2_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/v3_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/v4_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/straight2_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/car.h \
  /usr/include/plib/sg.h /usr/include/plib/ul.h /usr/include/ctype.h \
  /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
@@ -363,12 +363,12 @@ opponent.o: opponent.cpp /usr/include/stdc-predef.h opponent.h \
  /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
  /usr/include/x86_64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/raceman.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/graphic.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/simu.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/robottools.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/robot.h linalg.h \
- driver.h pit.h spline.h
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/raceman.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/graphic.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/simu.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/robottools.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/robot.h \
+ linalg.h driver.h pit.h spline.h
 spline.o: spline.cpp /usr/include/stdc-predef.h spline.h
 pit.o: pit.cpp /usr/include/stdc-predef.h pit.h driver.h \
  /usr/include/stdio.h \
@@ -433,7 +433,7 @@ pit.o: pit.cpp /usr/include/stdc-predef.h pit.h driver.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tgf.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tgf.h \
  /usr/include/x86_64-linux-gnu/sys/param.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
@@ -465,14 +465,14 @@ pit.o: pit.cpp /usr/include/stdc-predef.h pit.h driver.h \
  /usr/include/x86_64-linux-gnu/bits/param.h /usr/include/linux/param.h \
  /usr/include/x86_64-linux-gnu/asm/param.h \
  /usr/include/asm-generic/param.h /usr/include/assert.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/osspec.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/track.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/linalg_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/v2_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/v3_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/v4_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tmath/straight2_t.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/car.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/osspec.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/track.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/linalg_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/v2_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/v3_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/v4_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tmath/straight2_t.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/car.h \
  /usr/include/plib/sg.h /usr/include/plib/ul.h /usr/include/ctype.h \
  /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
@@ -488,9 +488,9 @@ pit.o: pit.cpp /usr/include/stdc-predef.h pit.h driver.h \
  /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
  /usr/include/x86_64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/raceman.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/graphic.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/simu.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/robottools.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/robot.h linalg.h \
- opponent.h spline.h
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/raceman.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/graphic.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/simu.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/robottools.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/robot.h \
+ linalg.h opponent.h spline.h

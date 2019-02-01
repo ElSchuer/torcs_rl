@@ -38,6 +38,7 @@ def get_model(action_size, state_size):
 
 
 eval_inst = eval.RLEvaluation()
+
 env = torcs_env.TorcsEnvironment(eval_inst=eval_inst)
 
 # model
@@ -47,6 +48,7 @@ agent = dqn_agent.DuelingDDQNAgent(state_size=env.state_size, action_size=env.ac
                                  queue_size=50000, batch_size=256, eps_decay=0.999, eps_min=0.05, decay_rate=0.95, update_steps=10000)
 
 env.set_agent(agent)
+
 env.set_reward_func(reward_function)
 
 env.learn()

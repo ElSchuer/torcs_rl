@@ -47,8 +47,8 @@ main.o: main.cpp /usr/include/stdc-predef.h /usr/include/c++/7/stdlib.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/GL/glu.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tgfclient.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tgf.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tgfclient.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tgf.h \
  /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
  /usr/include/x86_64-linux-gnu/bits/libio.h \
@@ -100,8 +100,8 @@ main.o: main.cpp /usr/include/stdc-predef.h /usr/include/c++/7/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/osspec.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/js.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/osspec.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/js.h \
  /usr/include/plib/ul.h /usr/include/ctype.h /usr/include/unistd.h \
  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
@@ -136,8 +136,8 @@ main.o: main.cpp /usr/include/stdc-predef.h /usr/include/c++/7/stdlib.h \
  /usr/include/asm-generic/posix_types.h /usr/include/linux/input.h \
  /usr/include/x86_64-linux-gnu/sys/time.h \
  /usr/include/linux/input-event-codes.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/screen_properties.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/client.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/screen_properties.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/client.h \
  linuxspec.h
 linuxspec.o: linuxspec.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/7/stdlib.h /usr/include/c++/7/cstdlib \
@@ -206,7 +206,7 @@ linuxspec.o: linuxspec.cpp /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/confname.h \
  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/tgf.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/tgf.h \
  /usr/include/x86_64-linux-gnu/sys/param.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
@@ -247,5 +247,5 @@ linuxspec.o: linuxspec.cpp /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/osspec.h \
- /home/elschuer/dev/torcs/vtorcs-RL-color/export/include/os.h
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/osspec.h \
+ /home/machine_learning/torcs_rl/vtorcs-RL-color/export/include/os.h

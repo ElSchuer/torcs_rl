@@ -1,2 +1,2 @@
-TORCS_BASE = /home/elschuer/dev/torcs/vtorcs-RL-color
-MAKE_DEFAULT = /home/elschuer/dev/torcs/vtorcs-RL-color/Make-default.mk
+TORCS_BASE = /home/machine_learning/torcs_rl/vtorcs-RL-color
+MAKE_DEFAULT = /home/machine_learning/torcs_rl/vtorcs-RL-color/Make-default.mk

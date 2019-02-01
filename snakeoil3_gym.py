@@ -142,6 +142,7 @@ class Client():
         self.S= ServerState()
         self.R= DriverAction()
         self.setup_connection()
+        
 
     def setup_connection(self):
         # == Set Up UDP Socket ==
@@ -243,16 +244,20 @@ class Client():
             try:
 
                 # Receive server data
+                #print('get servers input start', time.time())
                 sockdata,addr= self.so.recvfrom(data_size)
+                #print('get servers input after first', time.time())
                 sockdata2, addr2 = self.so.recvfrom(data_size)
-
+                #print('get servers input after second', time.time())
+                
+             
 
                 sockdata = sockdata.decode('utf-8')
 
                 sockdata2 = sockdata2.decode('utf-8')
 
                 sockdata = sockdata[:-1] + sockdata2
-
+                #print('get servers input end', time.time())
 
 
             except socket.error as emsg:
@@ -591,7 +596,7 @@ def getUbuntuFlavor():
     ubuntu_flavor_string = subprocess.check_output(['cat', '/var/log/installer/media-info']).decode(sys.stdout.encoding)
     ubuntu_flavor = ubuntu_flavor_string.split(' ', 1)[0]
     if (ubuntu_flavor == 'Lubuntu'):
-        return 'sh autostart_lubuntu.sh'
+        return "sh autostart_lubuntu.sh"
     else:
         return 'sh autostart_ubuntu.sh'
 # ================ MAIN ================

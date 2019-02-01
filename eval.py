@@ -7,16 +7,19 @@ class RLEvaluation:
         self.episodes, self.loss_values, self.score_values, self.mean_scores = [], [], [], []
         self.episode_ticks = episode_ticks
         self.mean_subset = mean_subset
+        #self.img = None
 
         #init plots
         sns.set(style="whitegrid")
         plt.ion()
         self.loss_plot = plt.subplot(211)
         self.score_plot = plt.subplot(212)
+        #self.img_plot = plt.subplot(313)
         self.loss_plot.set_ylabel("loss values")
         self.loss_plot.set_xlabel("episodes")
         self.score_plot.set_ylabel("score values")
         self.score_plot.set_xlabel("episodes")
+        #self.img_plot.set_xlabel("image")
         plt.show(block=False)
 
     def plot_train_loss(self):
@@ -29,6 +32,12 @@ class RLEvaluation:
         self.score_plot.plot(self.episodes, self.mean_scores, color='g', label='mean')
         plt.draw()
         plt.pause(0.001)
+
+    #def visualize_img(self, img):
+        #self.img = img[0,:,:,0]
+        #plt.imshow(self.img, cmap='gray')
+        #plt.pause(0.001)
+
 
     def visualize_data(self, episode, loss, score):
         self.episodes.append(episode)
