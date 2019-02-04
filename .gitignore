@@ -788,3 +788,5 @@ vtorcs-RL-color/src/tools/trackgen/track\.o
 vtorcs-RL-color/src/tools/trackgen/trackgen-bin
 
 vtorcs-RL-color/src/tools/trackgen/util\.o
+
+*.pyc
