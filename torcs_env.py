@@ -6,7 +6,7 @@ import os
 import cv2
 
 class TorcsEnvironment(Environment):
-    def __init__(self, eval_inst, seed = 10, train_steps=30):
+    def __init__(self, eval_inst, seed = 10, train_steps=10):
         super().__init__(self, seed=seed)
 
         self.env = TorcsEnv()
@@ -21,7 +21,6 @@ class TorcsEnvironment(Environment):
         self.action_size = self.env.action_space.n
         print('action space', self.env.action_space)
         print('action size', self.env.action_space.n)
-        self.img_old = None
 
     def step(self, action):
         return self.env.step(action)
@@ -55,9 +54,8 @@ class TorcsEnvironment(Environment):
             total_reward = 0
 
             s = 0
-	    
-            
-            hist = None
+
+            loss_values = []
 
             while True:
                 
@@ -68,15 +66,11 @@ class TorcsEnvironment(Environment):
                 next_state, reward, done, info = self.env.step(action)
                 
                 next_state = self.convert_oberservation_to_state(next_state)
-               
-		
-                #self.eval_inst.visualize_img(next_state)
+
                 img = next_state[0,:,:,0]
                 cv2.imshow('image',img)
                 cv2.waitKey(1)
-                #self.img_old = img
-                
-                
+
                 reward = self.get_reward(state, done, s, 0, reward)
                 
                 total_reward += reward
@@ -84,15 +78,18 @@ class TorcsEnvironment(Environment):
                 self.agent.remember(state, next_state, reward, action, done)
                 
                 hist = self.train_agent(s)
+
+                if hist is not None:
+                    loss_values.append(hist.history.get("loss")[0])
                 
                 state = next_state
                 
                 if done:
                     self.agent.save_model()
-                    if hist is not None:
-                        print("Episode {}, score {}, loss {:.2}, eps {:.4}, reward {}".format(e, s,
-                            hist.history.get("loss")[0], self.agent.eps, total_reward))
 
-                    self.eval_inst.visualize_data(e, hist.history.get("loss")[0] if hist is not None else 0, s)
+                    print("Episode {}, score {}, loss {:.2}, eps {:.4}, reward {}".format(e, s,
+                           np.mean(loss_values), self.agent.eps, total_reward))
+
+                    self.eval_inst.visualize_data(e, np.mean(loss_values), s)
 
                     break

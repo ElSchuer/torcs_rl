@@ -1,4 +1,5 @@
 /***************************************************************************
+/***************************************************************************
 
     file        : raceengine.cpp
     created     : Sat Nov 23 09:05:23 CET 2002
@@ -785,8 +786,6 @@ ReStart(void)
       memset(ReInfo->vision->img, 1, ReInfo->vision->imgsize * sizeof(unsigned char));
       memset(tmpRGBimg, 1, 1 * GIUSEIMGSIZE * GIUSEIMGSIZE * sizeof(unsigned char));
       memset(RGBscales, 1, 3 * sizeof(double));
-
-      printf( "sw %d - sh %d - vw %d - vh %d - imgsize %d\n", ReInfo->vision->sw, ReInfo->vision->sh, ReInfo->vision->vw, ReInfo->vision->vh, ReInfo->vision->imgsize);
 
       visionUpdate(); // put first image
     }
