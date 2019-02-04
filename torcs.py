@@ -13,7 +13,6 @@ def reward_function(state, done, score, max_score, reward):
 
 def get_model(action_size, state_size):
 
-    dense_keep_prob = 0.8
     init = 'glorot_uniform'
 
     model = Sequential()
@@ -27,8 +26,6 @@ def get_model(action_size, state_size):
     model.add(Conv2D(64, kernel_size=3, activation='relu', strides=(1, 1), kernel_initializer=init, kernel_regularizer=l2(0.001)))
     model.add(Flatten())
     model.add(Dense(units=1164, kernel_regularizer=l2(0.001)))
-    model.add(Dropout(rate=dense_keep_prob))
-
     model.add(Dense(units=100, kernel_regularizer=l2(0.001)))
     model.add(Dense(units=50, kernel_regularizer=l2(0.001)))
     #model.add(Dense(units=10, kernel_regularizer=l2(0.001)))
@@ -37,18 +34,27 @@ def get_model(action_size, state_size):
     return model
 
 
-eval_inst = eval.RLEvaluation()
+if __name__ == '__main__':
+    ## Parameters ##
+    resume_train = False
 
-env = torcs_env.TorcsEnvironment(eval_inst=eval_inst)
+    ##############################
 
-# model
-model = get_model(env.action_size, env.state_size)
+    eval_inst = eval.RLEvaluation()
 
-agent = dqn_agent.DuelingDDQNAgent(state_size=env.state_size, action_size=env.action_size, model=model, learning_rate=0.001,
-                                 queue_size=50000, batch_size=256, eps_decay=0.999, eps_min=0.05, decay_rate=0.95, update_steps=10000)
+    env = torcs_env.TorcsEnvironment(eval_inst=eval_inst)
 
-env.set_agent(agent)
+    # model
+    model = get_model(env.action_size, env.state_size)
 
-env.set_reward_func(reward_function)
+    agent = dqn_agent.DuelingDDQNAgent(state_size=env.state_size, action_size=env.action_size, model=model, learning_rate=0.001,
+                                     queue_size=50000, batch_size=256, eps_decay=0.999, eps_min=0.05, decay_rate=0.95, update_steps=10000)
 
-env.learn()
+    if resume_train == True:
+        agent.load_model()
+
+    env.set_agent(agent)
+
+    env.set_reward_func(reward_function)
+
+    env.learn()
