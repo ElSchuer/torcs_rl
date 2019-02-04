@@ -23,4 +23,6 @@ Torcs_rl has the following dependencies which have to be installed prior to usag
 * matplotlib 
 * seaborn 
 * gym
+* Pillow
+* cv2
 * xautomation
