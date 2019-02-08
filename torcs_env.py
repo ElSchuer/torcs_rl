@@ -6,7 +6,7 @@ import os
 import cv2
 
 class TorcsEnvironment(Environment):
-    def __init__(self, eval_inst, seed = 10, train_steps=10):
+    def __init__(self, eval_inst, seed = 10, train_steps=80):
         super().__init__(self, seed=seed)
 
         self.env = TorcsEnv()
@@ -21,6 +21,7 @@ class TorcsEnvironment(Environment):
         self.action_size = self.env.action_space.n
         print('action space', self.env.action_space)
         print('action size', self.env.action_space.n)
+        self.old_timestamp = None
 
     def step(self, action):
         return self.env.step(action)
@@ -42,8 +43,17 @@ class TorcsEnvironment(Environment):
         state = np.flipud(np.resize(ob[0], self.state_size))
         return state[None, :, :, :]
 
-    def learn(self):
-        for e in range(10000):
+    def log_timeout_warning(self):
+        f = open(self.eval_inst.logfile, 'a')       
+        f.write('[WARNING]; Timeout: Time consumed by "torcs_env.learn()" > 1 sec \n')
+        f.close()
+
+    def learn(self, resume_train):
+        episode_start = 0
+        if resume_train is True:
+            episode_start=self.eval_inst.episodes[-1]+1
+
+        for e in range(episode_start,10000):
             
             if np.mod(e, 3) == 0:
                 # Sometimes you need to relaunch TORCS because of the memory leak error
@@ -59,6 +69,9 @@ class TorcsEnvironment(Environment):
 
             while True:
                 
+                #if self.old_timestamp is not None and time.time()-self.old_timestamp > 1.0:
+                    #self.log_timeout_warning()
+                
                 s += 1
                
                 action = self.agent.act(state)
@@ -72,7 +85,7 @@ class TorcsEnvironment(Environment):
                 cv2.waitKey(1)
 
                 reward = self.get_reward(state, done, s, 0, reward)
-                
+                print(reward)
                 total_reward += reward
                 
                 self.agent.remember(state, next_state, reward, action, done)
@@ -87,8 +100,8 @@ class TorcsEnvironment(Environment):
                 if done:
                     self.agent.save_model()
 
-                    print("Episode {}, score {}, loss {:.2}, eps {:.4}, reward {}".format(e, s,
-                           np.mean(loss_values), self.agent.eps, total_reward))
+                    #print("Episode {}, score {}, loss {:.2}, eps {:.4}, reward {}".format(e, s,
+                      #     np.mean(loss_values), self.agent.eps, total_reward))
 
                     self.eval_inst.visualize_data(e, np.mean(loss_values), s)
 

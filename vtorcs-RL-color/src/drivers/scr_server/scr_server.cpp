@@ -64,7 +64,7 @@ typedef struct sockaddr_in tSockAddrIn;
 //#define UDP_LISTEN_PORT 3001
 #define UDP_ID "SCR-VIS"
 // GIUSE - for evolution we load the server over the limits - we need higher timeouts!
-#define UDP_DEFAULT_TIMEOUT 100000
+#define UDP_DEFAULT_TIMEOUT 300000
 //#define UDP_DEFAULT_TIMEOUT 100000
 // GIUSE - size has to be increased to accomodate larger images
 static int UDP_MSGLEN = 128*128+1000;
@@ -631,7 +631,7 @@ if (RESTARTING[index]==0)
     else
     {
 //#ifdef __UDP_SERVER_VERBOSE__
-        std::cout << "Timeout for client answer\n";
+       //std::cout << "Timeout for client answer\n";
 //#endif
 
         // If no new controls are availables uses old ones...

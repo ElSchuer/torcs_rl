@@ -102,7 +102,19 @@ class TorcsEnv:
         sp = np.array(obs['speedX'])
         progress = sp*np.cos(obs['angle'])
         #reward = progress
-        reward = np.cos(2*obs['trackPos'])*np.cos(2*obs['angle'])
+        #reward = np.cos(3*obs['trackPos'])*np.cos(3*obs['angle'])
+        reward = 2/3*(np.cosh(obs['trackPos'])/np.sinh(obs['trackPos'])-1)/3*(np.cosh(obs['angle'])/np.sinh(obs['trackPos'])-1)/3
+        if reward > 2:
+            reward=2
+        #if obs['angle'] < np.sqrt(3)/3 and obs['angle'] > -np.sqrt(3)/3:
+        #    reward = (-3*obs['trackPos']*obs['trackPos']+1)*(-3*obs['angle']*obs['angle']+1)
+        #else:
+        #    reward = (-3*obs['trackPos']*obs['trackPos']+1)*(3*obs['angle']*obs['angle']-1)
+        #if reward > 1:
+        #    reward = -reward
+        print(reward)
+        print('trackPos', obs['trackPos'])
+        print('angle', obs['angle'])
        
         # collision detection
         if obs['damage'] - obs_pre['damage'] > 0:
@@ -115,14 +127,14 @@ class TorcsEnv:
             episode_terminate = True
             client.R.d['meta'] = True
 
-        if self.terminal_judge_start < self.time_step: # Episode terminates if the progress of agent is small
-            if progress < self.termination_limit_progress:
-                episode_terminate = True
-                client.R.d['meta'] = True
+        #if self.terminal_judge_start < self.time_step: # Episode terminates if the progress of agent is small
+          #  if progress < self.termination_limit_progress:
+          #      episode_terminate = True
+          #      client.R.d['meta'] = True
 
-        if np.cos(obs['angle']) < 0: # Episode is terminated if the agent runs backward
-            episode_terminate = True
-            client.R.d['meta'] = True
+        #if np.cos(obs['angle']) < 0: # Episode is terminated if the agent runs backward
+         #   episode_terminate = True
+         #   client.R.d['meta'] = True
 
 
         if client.R.d['meta'] is True: # Send a reset signal

@@ -36,20 +36,22 @@ def get_model(action_size, state_size):
 
 if __name__ == '__main__':
     ## Parameters ##
-    resume_train = False
+    resume_train = True
 
     ##############################
 
-    eval_inst = eval.RLEvaluation()
+    eval_inst = eval.RLEvaluation(resume_train=resume_train)
 
     env = torcs_env.TorcsEnvironment(eval_inst=eval_inst)
 
     # model
     model = get_model(env.action_size, env.state_size)
-
-    agent = dqn_agent.DuelingDDQNAgent(state_size=env.state_size, action_size=env.action_size, model=model, learning_rate=0.001,
-                                     queue_size=50000, batch_size=256, eps_decay=0.999, eps_min=0.05, decay_rate=0.95, update_steps=10000)
-
+    #agent = dqn_agent.EGreegyDQNAgent(state_size=env.state_size, action_size=env.action_size, model=model, learning_rate=0.0005,
+    #                                 queue_size=50000, batch_size=256, eps_decay=0.999, eps_min=0.05, decay_rate=0.95)
+    #agent = dqn_agent.TargetNetworkDQNNAgent(state_size=env.state_size, action_size=env.action_size, model=model, learning_rate=0.0005,
+    #                                 queue_size=50000, batch_size=256, eps_decay=0.999, eps_min=0.05, decay_rate=0.95, update_steps=10000)
+    agent = dqn_agent.DQNAgent(state_size=env.state_size, action_size=env.action_size, model=model, learning_rate=0.0001,
+                                     queue_size=50000, batch_size=256,decay_rate=0.95)
     if resume_train == True:
         agent.load_model()
 
@@ -57,4 +59,4 @@ if __name__ == '__main__':
 
     env.set_reward_func(reward_function)
 
-    env.learn()
+    env.learn(resume_train =resume_train)

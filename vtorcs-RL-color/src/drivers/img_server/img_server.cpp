@@ -318,7 +318,7 @@ drive(int index, tCarElt* car, tSituation *s)
     } // END OF Read the client controller action
     else
     { // Server timeout, use old controls for another timestep
-        std::cout << "Timeout for client answer\n";
+        //std::cout << "Timeout for client answer\n";
         car->_accelCmd = oldAccel[index];
         car->_brakeCmd = oldBrake[index];
         car->_gearCmd  = oldGear[index];
