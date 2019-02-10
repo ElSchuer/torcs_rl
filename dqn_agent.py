@@ -8,9 +8,11 @@ from keras import backend as K
 from keras.models import Model
 import tensorflow as tf
 
+
 class DQNAgent:
 
-    def __init__(self, state_size, action_size, model, decay_rate=0.95, learning_rate=0.001, model_name='model.h5', batch_size=100, queue_size=10000):
+    def __init__(self, state_size, action_size, model, decay_rate=0.95, learning_rate=0.001, model_name='model.h5',
+                 batch_size=100, queue_size=10000, loss='mse'):
         self.model_name = model_name
 
         self.state_size = state_size
@@ -23,7 +25,85 @@ class DQNAgent:
         self.data_batch = deque(maxlen=queue_size)
 
         self.model = model
-        self.model.compile(loss='mse', optimizer=Adam(lr=self.learning_rate))
+        self.loss = loss
+        self.compile_model(loss)
+
+        # Epsilon Greegy Extension Parameters
+        self.eps_greegy_enabled = False
+        self.eps = 1
+        self.eps_min = 0.01
+        self.eps_decay = 0.995
+
+        # Target Network Extension Parameters
+        self.target_network_enabled = False
+        self.target_model = self.model
+        self.update_steps = 5000
+        self.step = 0
+
+        # Double DQN Extension Parameter
+        self.double_dqn_enabled = False
+
+        # Dueling DQN Extension Parameter
+        self.dueling_dqn_enabled = False
+        self.dueling_type = 'naive'
+
+    def compile_model(self, loss):
+        if loss == 'huber':
+            self.model.compile(loss=self.huber_loss, optimizer=Adam(lr=self.learning_rate))
+        else:
+            self.model.compile(loss='mse', optimizer=Adam(lr=self.learning_rate))
+
+    def enable_epsilon_greedy(self, eps_min, eps_start, eps_decay):
+        self.eps_greegy_enabled = True
+        self.eps = eps_start
+        self.eps_min = eps_min
+        self.eps_decay = eps_decay
+
+    def decay_epsilon(self):
+        if self.eps > self.eps_min:
+            self.eps *= self.eps_decay
+
+    def enable_target_network(self, update_steps):
+        self.target_network_enabled = True
+        self.update_steps = update_steps
+
+    def update_target_model(self):
+        if self.step % self.update_steps == 0:
+            self.target_model.set_weights(self.model.get_weights())
+            print("Update target model")
+
+        self.step += 1
+
+    def enable_double_dqn(self):
+        self.double_dqn_enabled = True
+
+    def enable_dueling_dqn(self, dueling_type):
+        self.dueling_dqn_enabled = True
+        self.dueling_type = dueling_type
+
+        self.model = self.get_dueling_model(self.model, self.action_size)
+        self.compile_model(self.loss)
+
+    def get_dueling_model(self, model, action_size):
+        last_layer = model.layers[-2]
+
+        y = Dense(action_size + 1, activation='linear')(last_layer.output)
+
+        if self.dueling_type == 'naive':
+            output = Lambda(lambda a: K.expand_dims(a[:, 0], -1) + a[:, 1:],
+                            output_shape=(action_size,))(y)
+        elif self.dueling_type == 'mean':
+            output = Lambda(lambda a: K.expand_dims(a[:, 0], -1) + a[:, 1:] - K.mean(a[:, 1:], axis=1, keepdims=True),
+                            output_shape=(action_size,))(y)
+        elif self.dueling_type == 'max':
+            output = Lambda(lambda a: K.expand_dims(a[:, 0], -1) + a[:, 1:] - K.max(a[:, 1:], axis=1, keepdims=True),
+                            output_shape=(action_size,))(y)
+
+        model = Model(inputs=model.input, outputs=output)
+
+        model.summary()
+
+        return model
 
     def save_model(self):
         self.model.save(self.model_name)
@@ -32,12 +112,23 @@ class DQNAgent:
         self.model.load_weights(self.model_name)
 
     def act(self, state):
-        return np.argmax(self.model.predict(state))
+        if self.eps_greegy_enabled and np.random.rand() <= self.eps:
+            return random.randrange(self.action_size)
+        else:
+            return np.argmax(self.model.predict(state))
 
     def remember(self, state, next_state, reward, action, done):
+
+        if self.target_network_enabled:
+            self.update_target_model()
+
         self.data_batch.append([state, next_state, reward, action, done])
 
     def train(self):
+
+        if self.eps_greegy_enabled:
+            self.decay_epsilon()
+
         return self.train_batch()
 
     def huber_loss(self, y_true, y_pred, clipping_delta=1.0):
@@ -70,8 +161,17 @@ class DQNAgent:
                 target[0][action] = reward
             else:
                 # q(a', s')
-                q_future = self.model.predict(next_state)[0]
-                target[0][action] = reward + self.decay_rate * np.amax(q_future)
+                if self.target_network_enabled:
+                    q_target = self.target_model.predict(next_state)[0]
+                else:
+                    q_target = self.model.predict(next_state)[0]
+
+                if self.double_dqn_enabled:
+                    q_next = self.model.predict(next_state)[0]
+                    next_action = np.argmax(q_next)
+                    target[0][action] = reward + self.decay_rate * q_target[next_action]
+                else:
+                    target[0][action] = reward + self.decay_rate * np.amax(q_target)
 
             states.append(state[0])
             targets.append(target[0])
@@ -79,145 +179,3 @@ class DQNAgent:
         history = self.model.fit(np.array(states), np.array(targets), verbose=0, epochs=1)
 
         return history
-
-class EGreegyDQNAgent(DQNAgent):
-    def __init__(self, state_size, action_size, model, decay_rate=0.95, learning_rate=0.001, model_name='model.h5', batch_size=100, queue_size=10000,
-                 eps_start=1.0, eps_min=0.01, eps_decay=0.999):
-        
-        super(EGreegyDQNAgent, self).__init__(state_size, action_size=action_size, model=model, learning_rate=learning_rate, model_name=model_name,
-                                                batch_size=batch_size, queue_size=queue_size, decay_rate=decay_rate)
-
-        self.eps = eps_start
-        self.eps_min = eps_min
-        self.eps_decay = eps_decay
-
-    def act(self, state):
-
-        if np.random.rand() <= self.eps:
-            return random.randrange(self.action_size)
-
-        return np.argmax(self.model.predict(state))
-
-    def decay_epsilon(self):
-        if self.eps > self.eps_min:
-            self.eps *= self.eps_decay
-
-    def train(self):
-        self.decay_epsilon()
-        return self.train_batch()
-
-
-class TargetNetworkDQNNAgent(EGreegyDQNAgent):
-
-    def __init__(self, state_size, action_size, model, decay_rate=0.95, learning_rate=0.001, model_name='model.h5', batch_size=100, queue_size=10000,
-                 eps_start=1.0, eps_min=0.01, eps_decay=0.999, update_steps = 5000):
-
-        super().__init__(self, action_size=action_size, model=model, decay_rate=decay_rate,
-                         batch_size=batch_size, model_name=model_name, learning_rate=learning_rate,
-                         queue_size=queue_size, eps_start=eps_start, eps_min=eps_min, eps_decay=eps_decay)
-
-        self.target_model = self.model
-        self.update_steps = update_steps
-        self.step = 0
-
-    def update_target_model(self):
-        if self.step % self.update_steps == 0:
-            self.target_model.set_weights(self.model.get_weights())
-            print("Update target model")
-
-        self.step += 1
-
-    def train_batch(self):
-
-        tmp_batch = random.sample(self.data_batch, self.batch_size)
-
-        states = []
-        targets = []
-
-        for state, next_state, reward, action, done in tmp_batch:
-
-            # q(a,s)
-            target = self.model.predict(state)
-
-            if done:
-                target[0][action] = reward
-            else:
-                # q(a', s')
-                q_future = self.target_model.predict(next_state)[0]
-                target[0][action] = reward + self.decay_rate * np.amax(q_future)
-
-            states.append(state[0])
-            targets.append(target[0])
-
-        history = self.model.fit(np.array(states), np.array(targets), verbose=0, epochs=1)
-
-        return history
-
-    def remember(self, state, next_state, reward, action, done):
-        self.update_target_model()
-
-        super().remember(state, next_state, reward, action, done)
-
-
-class DoubleDQNAgent(TargetNetworkDQNNAgent):
-
-    def __init__(self, state_size, action_size, model, decay_rate=0.95, learning_rate=0.001, model_name='model.h5', batch_size=100, queue_size=10000,
-                 eps_start=1.0, eps_min=0.01, eps_decay=0.999, update_steps = 5000):
-
-        super().__init__(self, state_size=state_size, action_size=action_size, model=model, decay_rate=decay_rate,
-                         batch_size=batch_size, model_name=model_name, learning_rate=learning_rate,
-                         queue_size=queue_size, eps_start=eps_start, eps_min=eps_min, eps_decay=eps_decay, update_steps=update_steps)
-
-    def train_batch(self):
-        tmp_batch = random.sample(self.data_batch, self.batch_size)
-
-        states = []
-        targets = []
-
-        for state, next_state, reward, action, done in tmp_batch:
-
-            # q(a,s)
-            target = self.model.predict(state)
-
-            if done:
-                target[0][action] = reward
-            else:
-                # q(a', s')
-                q_target = self.target_model.predict(next_state)[0]
-                q_next = self.model.predict(next_state)[0]
-                next_action = np.argmax(q_next)
-                target[0][action] = reward + self.decay_rate * q_target[next_action]
-
-            states.append(state[0])
-            targets.append(target[0])
-
-        history = self.model.fit(np.array(states), np.array(targets), verbose=0, epochs=1)
-
-        return history
-
-class DuelingDDQNAgent(TargetNetworkDQNNAgent):
-
-    def __init__(self, state_size, action_size, model, decay_rate=0.95, learning_rate=0.001, model_name='model.h5', batch_size=100, queue_size=10000,
-                 eps_start=1.0, eps_min=0.01, eps_decay=0.999, update_steps = 5000):
-
-        model = self.get_dueling_model(model, action_size)
-
-        super().__init__(self, action_size=action_size, model=model, decay_rate=decay_rate,
-                         batch_size=batch_size, model_name=model_name, learning_rate=learning_rate,
-                         queue_size=queue_size, eps_start=eps_start, eps_min=eps_min, eps_decay=eps_decay, update_steps=update_steps)
-
-
-
-    def get_dueling_model(self, model, action_size):
-
-        last_layer = model.layers[-2]
-
-        y = Dense(action_size + 1, activation='linear')(last_layer.output)
-        outputlayer = Lambda(lambda a: K.expand_dims(a[:, 0], -1) + a[:, 1:] - K.mean(a[:, 1:], axis=1, keepdims=True),
-                             output_shape=(action_size,))(y)
-
-        model = Model(inputs = model.input, outputs = outputlayer)
-
-        model.summary()
-
-        return model

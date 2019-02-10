@@ -9,7 +9,7 @@ import torcs_env
 
 
 def reward_function(state, done, score, max_score, reward):
-    return reward
+    return 1 if done else -1
 
 def get_model(action_size, state_size):
 
@@ -23,11 +23,11 @@ def get_model(action_size, state_size):
     model.add(Conv2D(36, kernel_size=5, activation='relu', strides=(2, 2), kernel_initializer=init, kernel_regularizer=l2(0.001)))
     model.add(Conv2D(48, kernel_size=5, activation='relu', strides=(2, 2), kernel_initializer=init, kernel_regularizer=l2(0.001)))
     model.add(Conv2D(64, kernel_size=3, activation='relu', strides=(1, 1), kernel_initializer=init, kernel_regularizer=l2(0.001)))
-    model.add(Conv2D(64, kernel_size=3, activation='relu', strides=(1, 1), kernel_initializer=init, kernel_regularizer=l2(0.001)))
+    #model.add(Conv2D(64, kernel_size=3, activation='relu', strides=(1, 1), kernel_initializer=init, kernel_regularizer=l2(0.001)))
     model.add(Flatten())
     model.add(Dense(units=1164, kernel_regularizer=l2(0.001)))
     model.add(Dense(units=100, kernel_regularizer=l2(0.001)))
-    model.add(Dense(units=50, kernel_regularizer=l2(0.001)))
+    #model.add(Dense(units=50, kernel_regularizer=l2(0.001)))
     #model.add(Dense(units=10, kernel_regularizer=l2(0.001)))
     model.add(Dense(units=action_size, activation='linear'))
 
@@ -36,7 +36,7 @@ def get_model(action_size, state_size):
 
 if __name__ == '__main__':
     ## Parameters ##
-    resume_train = True
+    resume_train = False
 
     ##############################
 
@@ -46,12 +46,10 @@ if __name__ == '__main__':
 
     # model
     model = get_model(env.action_size, env.state_size)
-    #agent = dqn_agent.EGreegyDQNAgent(state_size=env.state_size, action_size=env.action_size, model=model, learning_rate=0.0005,
-    #                                 queue_size=50000, batch_size=256, eps_decay=0.999, eps_min=0.05, decay_rate=0.95)
-    #agent = dqn_agent.TargetNetworkDQNNAgent(state_size=env.state_size, action_size=env.action_size, model=model, learning_rate=0.0005,
-    #                                 queue_size=50000, batch_size=256, eps_decay=0.999, eps_min=0.05, decay_rate=0.95, update_steps=10000)
-    agent = dqn_agent.DQNAgent(state_size=env.state_size, action_size=env.action_size, model=model, learning_rate=0.0001,
-                                     queue_size=50000, batch_size=256,decay_rate=0.95)
+    agent = dqn_agent.DQNAgent(state_size=env.state_size, action_size=env.action_size, model=model, learning_rate=0.001,
+                                      queue_size=50000, batch_size=350, decay_rate=0.95)
+    agent.enable_epsilon_greedy(eps_decay=0.999, eps_min=0.1, eps_start=1.0)
+
     if resume_train == True:
         agent.load_model()
 
