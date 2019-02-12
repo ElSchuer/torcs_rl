@@ -38,7 +38,7 @@ class DQNAgent:
         self.target_network_enabled = False
         self.target_model = self.model
         self.update_steps = 5000
-        self.step = 0
+        self.step = 1
 
         # Double DQN Extension Parameter
         self.double_dqn_enabled = False
@@ -83,6 +83,9 @@ class DQNAgent:
 
         self.model = self.get_dueling_model(self.model, self.action_size)
         self.compile_model(self.loss)
+
+        if self.target_network_enabled:
+            self.target_model = self.model
 
     def get_dueling_model(self, model, action_size):
         last_layer = model.layers[-2]
@@ -145,6 +148,12 @@ class DQNAgent:
 
         return K.mean(loss)
 
+    def get_target_q(self, next_state):
+        if self.target_network_enabled:
+            return self.target_model.predict(next_state)[0]
+        else:
+            return self.model.predict(next_state)[0]
+
     def train_batch(self):
 
         tmp_batch = random.sample(self.data_batch, self.batch_size)
@@ -161,10 +170,7 @@ class DQNAgent:
                 target[0][action] = reward
             else:
                 # q(a', s')
-                if self.target_network_enabled:
-                    q_target = self.target_model.predict(next_state)[0]
-                else:
-                    q_target = self.model.predict(next_state)[0]
+                q_target = self.get_target_q(next_state)
 
                 if self.double_dqn_enabled:
                     q_next = self.model.predict(next_state)[0]
