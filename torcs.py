@@ -6,8 +6,6 @@ import dqn_agent
 import eval
 import torcs_env
 
-
-
 def reward_function(state, done, score, max_score, reward):
     return 1 if done else -1
 
