@@ -6,8 +6,8 @@ import os
 import cv2
 
 class TorcsEnvironment(Environment):
-    def __init__(self, eval_inst, seed = 10, train_steps=80):
-        super().__init__(self, seed=seed)
+    def __init__(self, eval_inst, seed = 10, max_episodes = 100000, train_steps=80):
+        super().__init__(max_episodes=max_episodes, seed=seed)
 
         self.env = TorcsEnv()
 
@@ -53,7 +53,7 @@ class TorcsEnvironment(Environment):
         if resume_train is True:
             episode_start=self.eval_inst.episodes[-1]+1
 
-        for e in range(episode_start,10000):
+        for e in range(episode_start, self.max_episodes):
             
             if np.mod(e, 3) == 0:
                 # Sometimes you need to relaunch TORCS because of the memory leak error

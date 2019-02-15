@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-import time
+import os
 
 class RLEvaluation:
     def __init__(self, episode_ticks = 1, mean_subset = 100, logfile='log.txt', resume_train=False):
@@ -13,6 +13,7 @@ class RLEvaluation:
 
         #init plots
         sns.set(style="whitegrid")
+        plt.clf()
         plt.ion()
         self.loss_plot = plt.subplot(211)
         self.score_plot = plt.subplot(212)
@@ -75,3 +76,11 @@ class RLEvaluation:
             print("Mean Score : {}, total_steps: {}".format(np.mean(self.score_values[-self.mean_subset:]), np.sum(self.score_values)))
             if episode > 0:
                 self.log_data()
+    def save_plot(self, path, name):
+        if not os.path.exists(path):
+            os.makedirs(path, exist_ok=True)
+
+        plt.savefig(path + name)
+
+    def reset(self):
+        self.__init__(episode_ticks=self.episode_ticks, mean_subset=self.mean_subset)
